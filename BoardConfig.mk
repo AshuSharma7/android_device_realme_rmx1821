@@ -101,6 +101,13 @@ TW_INPUT_BLACKLIST := "hbtp_vm"
 TW_BRIGHTNESS_PATH := /sys/class/leds/lcd-backlight/brightness
 TW_NO_SCREEN_BLANK := true
 
+#Include DTBO image
+BOARD_KERNEL_SEPARATED_DTBO := true
+BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_BOOTIMG_HEADER_VERSION := 1
+BOARD_MKBOOTIMG_ARGS := --ramdisk_offset $(BOARD_RAMDISK_OFFSET) --tags_offset $(BOARD_KERNEL_TAGS_OFFSET) --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
+BOARD_PREBUILT_DTBOIMAGE := $(DEVICE_PATH)/prebuilt/dtbo.img
+
 # Misc
 TW_USE_MODEL_HARDWARE_ID_FOR_DEVICE_ID := true
 TW_DEFAULT_LANGUAGE := en
@@ -111,6 +118,12 @@ BOARD_NEEDS_VENDORIMAGE_SYMLINK := false
 TARGET_USES_EXFAT := true
 TARGET_USES_NTFS := true
 TW_USE_TOOLBOX := true
+
+#PB OFFICIAL
+PB_OFFICIAL := true
+
+#Misc
+ALLOW_MISSING_DEPENDENCIES := true
 
 # Fstab
 PRODUCT_COPY_FILES += device/realme/rmx1821/twrp.fstab:recovery/root/etc/twrp.fstab
